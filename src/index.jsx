@@ -8,13 +8,13 @@ import reportWebVitals from './reportWebVitals';
 const root = document.getElementById('root');
 
 function render() {
-  ReactDOM.render(<App />, root)
+  ReactDOM.render(<App />, root);
 }
 
 if (module.hot) {
   module.hot.accept('./app/layout/App', () => {
     setTimeout(render);
-  })
+  });
 }
 
 render();
