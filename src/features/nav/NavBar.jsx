@@ -7,13 +7,13 @@ function Navbar() {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item header>
-            Get Together
+            Hangout
           </Menu.Item>
           <Menu.Item>
-            Get Togethers
+            Hangouts
           </Menu.Item>
           <Menu.Item>
-            <Button positive inverted content="Create a Get Together" />
+            <Button positive inverted content="Create a Hangout" />
           </Menu.Item>
           <Menu.Item position="right">
             <Button basic inverted content="Login" />
