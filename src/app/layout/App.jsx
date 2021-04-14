@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react';
 import HangoutDashboard from '../../features/hangouts/hangoutDashboard/HangoutDashboard';
 import Navbar from '../../features/nav/NavBar';
 
-function App() {
+export default function App() {
   return (
     <>
       <Navbar />
@@ -13,5 +13,3 @@ function App() {
     </>
   );
 }
-
-export default App;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Menu } from 'semantic-ui-react';
 
-function Navbar() {
+export default function Navbar() {
   return (
     <>
       <Menu inverted fixed="top">
@@ -24,5 +24,3 @@ function Navbar() {
     </>
   );
 }
-
-export default Navbar;
