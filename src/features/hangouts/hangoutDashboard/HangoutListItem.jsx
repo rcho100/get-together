@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-  Button, Icon, Item, Segment,
+  Button, Icon, Item, List, Segment,
 } from 'semantic-ui-react';
+import HangoutListAttendee from './HangoutListAttendee';
 
 export default function HangoutListItem() {
   return (
@@ -18,6 +19,13 @@ export default function HangoutListItem() {
             </Item.Content>
           </Item>
         </Item.Group>
+      </Segment>
+      <Segment secondary>
+        <List horizontal>
+          <HangoutListAttendee />
+          <HangoutListAttendee />
+          <HangoutListAttendee />
+        </List>
       </Segment>
       <Segment>
         <span>
