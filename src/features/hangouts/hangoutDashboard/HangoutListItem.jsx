@@ -7,6 +7,7 @@ export default function HangoutListItem() {
       <Segment>
         <Item.Group>
           <Item>
+            <Item.Image size="tiny" circular src="/assets/defaultUserImage.png" />
             <Item.Content>
               <Item.Header content="Hangout Title" />
               <Item.Description>
