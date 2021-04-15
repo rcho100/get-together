@@ -1,5 +1,7 @@
 import React from 'react';
-import { Item, Segment } from 'semantic-ui-react';
+import {
+  Button, Icon, Item, Segment,
+} from 'semantic-ui-react';
 
 export default function HangoutListItem() {
   return (
@@ -16,6 +18,20 @@ export default function HangoutListItem() {
             </Item.Content>
           </Item>
         </Item.Group>
+      </Segment>
+      <Segment>
+        <span>
+          <Icon name="clock" />
+          {' '}
+          Date
+          <Icon name="marker" />
+          {' '}
+          Location
+        </span>
+      </Segment>
+      <Segment clearing>
+        <div>Description of Hangout</div>
+        <Button color="teal" floated="right" content="View" />
       </Segment>
     </Segment.Group>
   );
