@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import HangoutListItem from './HangoutListItem';
 
-export default function HangoutList() {
+export default function HangoutList({ hangouts }) {
   return (
     <>
-      <HangoutListItem />
-      <HangoutListItem />
-      <HangoutListItem />
-      <HangoutListItem />
+      {hangouts.map((hangout) => (
+        <HangoutListItem hangout={hangout} key={hangout.id} />
+      ))}
     </>
   );
 }
