@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Button, Container, Menu } from 'semantic-ui-react';
 
-export default function Navbar() {
+export default function Navbar({ setFormDisplayed }) {
   return (
     <>
       <Menu inverted fixed="top">
@@ -13,7 +14,7 @@ export default function Navbar() {
             Hangouts
           </Menu.Item>
           <Menu.Item>
-            <Button positive inverted content="Create a Hangout" />
+            <Button onClick={() => setFormDisplayed(true)} positive inverted content="Create a Hangout" />
           </Menu.Item>
           <Menu.Item position="right">
             <Button basic inverted content="Login" />

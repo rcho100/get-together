@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   Button, Form, Header, Segment,
 } from 'semantic-ui-react';
 
-export default function HangoutForm() {
+export default function HangoutForm({ setFormDisplayed }) {
   return (
     <Segment clearing>
       <Header content="Create New Hangout" />
@@ -27,7 +28,7 @@ export default function HangoutForm() {
           <input type="text" placeholder="Date" />
         </Form.Field>
         <Button type="submit" floated="right" positive content="Create" />
-        <Button type="submit" floated="right" content="Cancel" />
+        <Button onClick={() => setFormDisplayed(false)} type="submit" floated="right" content="Cancel" />
       </Form>
     </Segment>
   );
