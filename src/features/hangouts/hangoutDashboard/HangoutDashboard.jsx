@@ -8,6 +8,10 @@ import { sampleData } from '../../../app/api/sampleData';
 export default function HangoutDashboard({ formDisplayed, setFormDisplayed }) {
   const [hangouts, setHangouts] = useState(sampleData);
 
+  const handleCreateHangout = (hangout) => {
+    setHangouts([...hangouts, hangout]);
+  };
+
   return (
     <Grid>
       <Grid.Column width={10}>
@@ -15,7 +19,7 @@ export default function HangoutDashboard({ formDisplayed, setFormDisplayed }) {
       </Grid.Column>
       <Grid.Column width={6}>
         {formDisplayed
-        && <HangoutForm setFormDisplayed={setFormDisplayed} />}
+        && <HangoutForm setFormDisplayed={setFormDisplayed} createHangout={handleCreateHangout} />}
       </Grid.Column>
     </Grid>
   );

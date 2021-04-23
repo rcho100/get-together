@@ -1,11 +1,11 @@
-/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import {
   Button, Form, Header, Segment,
 } from 'semantic-ui-react';
+import cuid from 'cuid';
 
-export default function HangoutForm({ setFormDisplayed }) {
+export default function HangoutForm({ setFormDisplayed, createHangout }) {
   const initialValues = {
     title: '',
     category: '',
@@ -22,10 +22,17 @@ export default function HangoutForm({ setFormDisplayed }) {
     setValues({ ...values, [name]: value });
   };
 
+  const handleFormSubmit = () => {
+    createHangout({
+      ...values, id: cuid(), hostedBy: 'Rich', attendees: [], hostPhotoURL: '/assets/defaultUserImage.png',
+    });
+    setFormDisplayed(false);
+  };
+
   return (
     <Segment clearing>
       <Header content="Create New Hangout" />
-      <Form>
+      <Form onSubmit={handleFormSubmit}>
         <Form.Field>
           <input
             name="title"
