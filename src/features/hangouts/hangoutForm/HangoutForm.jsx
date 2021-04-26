@@ -6,7 +6,7 @@ import {
 import cuid from 'cuid';
 
 export default function HangoutForm({
-  setFormDisplayed, createHangout, selectedHangout,
+  setFormDisplayed, createHangout, selectedHangout, updateHangout,
 }) {
   const initialValues = selectedHangout ?? {
     title: '',
@@ -25,9 +25,13 @@ export default function HangoutForm({
   };
 
   const handleFormSubmit = () => {
-    createHangout({
-      ...values, id: cuid(), hostedBy: 'Rich', attendees: [], hostPhotoURL: '/assets/defaultUserImage.png',
-    });
+    if (selectedHangout) {
+      updateHangout({ ...selectedHangout, ...values });
+    } else {
+      createHangout({
+        ...values, id: cuid(), hostedBy: 'Rich', attendees: [], hostPhotoURL: '/assets/defaultUserImage.png',
+      });
+    }
     setFormDisplayed(false);
   };
 
@@ -89,9 +93,7 @@ export default function HangoutForm({
             onChange={(event) => handleInputChange(event)}
           />
         </Form.Field>
-        {!selectedHangout
-          ? <Button type="submit" floated="right" positive content="Create" />
-          : null}
+        <Button type="submit" floated="right" positive content={selectedHangout ? 'Edit' : 'Create'} />
         <Button onClick={() => setFormDisplayed(false)} type="submit" floated="right" content="Cancel" />
       </Form>
     </Segment>

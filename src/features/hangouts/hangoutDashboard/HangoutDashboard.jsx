@@ -14,6 +14,13 @@ export default function HangoutDashboard({
     setHangouts([...hangouts, hangout]);
   };
 
+  const handleUpdateHangout = (updatedHangout) => {
+    setHangouts(hangouts.map((hangout) => (
+      hangout.id === updatedHangout.id ? updatedHangout : hangout
+    )));
+    selectHangout(null);
+  };
+
   return (
     <Grid>
       <Grid.Column width={10}>
@@ -27,6 +34,7 @@ export default function HangoutDashboard({
           setFormDisplayed={setFormDisplayed}
           createHangout={handleCreateHangout}
           selectedHangout={selectedHangout}
+          updateHangout={handleUpdateHangout}
         />
         )}
       </Grid.Column>
