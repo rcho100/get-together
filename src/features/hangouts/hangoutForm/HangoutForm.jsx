@@ -5,8 +5,10 @@ import {
 } from 'semantic-ui-react';
 import cuid from 'cuid';
 
-export default function HangoutForm({ setFormDisplayed, createHangout }) {
-  const initialValues = {
+export default function HangoutForm({
+  setFormDisplayed, createHangout, selectedHangout,
+}) {
+  const initialValues = selectedHangout ?? {
     title: '',
     category: '',
     description: '',
@@ -31,7 +33,7 @@ export default function HangoutForm({ setFormDisplayed, createHangout }) {
 
   return (
     <Segment clearing>
-      <Header content="Create New Hangout" />
+      <Header content={selectedHangout ? 'Hangout Details' : 'Create New Hangout'} />
       <Form onSubmit={handleFormSubmit}>
         <Form.Field>
           <input
@@ -87,7 +89,9 @@ export default function HangoutForm({ setFormDisplayed, createHangout }) {
             onChange={(event) => handleInputChange(event)}
           />
         </Form.Field>
-        <Button type="submit" floated="right" positive content="Create" />
+        {!selectedHangout
+          ? <Button type="submit" floated="right" positive content="Create" />
+          : null}
         <Button onClick={() => setFormDisplayed(false)} type="submit" floated="right" content="Cancel" />
       </Form>
     </Segment>

@@ -5,7 +5,9 @@ import HangoutForm from '../hangoutForm/HangoutForm';
 import HangoutList from './HangoutList';
 import { sampleData } from '../../../app/api/sampleData';
 
-export default function HangoutDashboard({ formDisplayed, setFormDisplayed }) {
+export default function HangoutDashboard({
+  formDisplayed, setFormDisplayed, selectHangout, selectedHangout,
+}) {
   const [hangouts, setHangouts] = useState(sampleData);
 
   const handleCreateHangout = (hangout) => {
@@ -15,11 +17,18 @@ export default function HangoutDashboard({ formDisplayed, setFormDisplayed }) {
   return (
     <Grid>
       <Grid.Column width={10}>
-        <HangoutList hangouts={hangouts} />
+        <HangoutList hangouts={hangouts} selectHangout={selectHangout} />
       </Grid.Column>
       <Grid.Column width={6}>
         {formDisplayed
-        && <HangoutForm setFormDisplayed={setFormDisplayed} createHangout={handleCreateHangout} />}
+        && (
+        <HangoutForm
+          key={selectedHangout ? selectedHangout.id : null}
+          setFormDisplayed={setFormDisplayed}
+          createHangout={handleCreateHangout}
+          selectedHangout={selectedHangout}
+        />
+        )}
       </Grid.Column>
     </Grid>
   );

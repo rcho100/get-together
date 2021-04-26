@@ -8,6 +8,11 @@ export default function App() {
   const [formDisplayed, setFormDisplayed] = useState(false);
   const [selectedHangout, setSelectedHangout] = useState(null);
 
+  const handleSelectHangout = (hangout) => {
+    setSelectedHangout(hangout);
+    setFormDisplayed(true);
+  };
+
   const handleCreateFormDisplayed = () => {
     setSelectedHangout(null);
     setFormDisplayed(true);
@@ -20,6 +25,8 @@ export default function App() {
         <HangoutDashboard
           formDisplayed={formDisplayed}
           setFormDisplayed={setFormDisplayed}
+          selectHangout={handleSelectHangout}
+          selectedHangout={selectedHangout}
         />
       </Container>
     </>

@@ -5,7 +5,7 @@ import {
 } from 'semantic-ui-react';
 import HangoutListAttendee from './HangoutListAttendee';
 
-export default function HangoutListItem({ hangout }) {
+export default function HangoutListItem({ hangout, selectHangout }) {
   return (
     <Segment.Group>
       <Segment>
@@ -22,7 +22,7 @@ export default function HangoutListItem({ hangout }) {
       <Segment secondary>
         <List horizontal>
           {hangout.attendees.map((attendee) => (
-            <HangoutListAttendee attendee={attendee} key={attendee.id} />
+            <HangoutListAttendee key={attendee.id} attendee={attendee} />
           ))}
         </List>
       </Segment>
@@ -37,7 +37,7 @@ export default function HangoutListItem({ hangout }) {
       <Segment clearing>
         <div>Description of Hangout</div>
         <p>{hangout.description}</p>
-        <Button color="teal" floated="right" content="View" />
+        <Button onClick={() => selectHangout(hangout)} color="teal" floated="right" content="View" />
       </Segment>
     </Segment.Group>
   );

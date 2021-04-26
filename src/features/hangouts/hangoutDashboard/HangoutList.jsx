@@ -2,11 +2,11 @@
 import React from 'react';
 import HangoutListItem from './HangoutListItem';
 
-export default function HangoutList({ hangouts }) {
+export default function HangoutList({ hangouts, selectHangout }) {
   return (
     <>
       {hangouts.map((hangout) => (
-        <HangoutListItem hangout={hangout} key={hangout.id} />
+        <HangoutListItem key={hangout.id} hangout={hangout} selectHangout={selectHangout} />
       ))}
     </>
   );
