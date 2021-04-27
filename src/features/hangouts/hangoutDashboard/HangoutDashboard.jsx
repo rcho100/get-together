@@ -21,10 +21,18 @@ export default function HangoutDashboard({
     selectHangout(null);
   };
 
+  const handleDeleteHangout = (hangoutID) => {
+    setHangouts(hangouts.filter((hangout) => hangout.id !== hangoutID));
+  };
+
   return (
     <Grid>
       <Grid.Column width={10}>
-        <HangoutList hangouts={hangouts} selectHangout={selectHangout} />
+        <HangoutList
+          hangouts={hangouts}
+          selectHangout={selectHangout}
+          deleteHangout={handleDeleteHangout}
+        />
       </Grid.Column>
       <Grid.Column width={6}>
         {formDisplayed

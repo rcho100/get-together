@@ -5,7 +5,7 @@ import {
 } from 'semantic-ui-react';
 import HangoutListAttendee from './HangoutListAttendee';
 
-export default function HangoutListItem({ hangout, selectHangout }) {
+export default function HangoutListItem({ hangout, selectHangout, deleteHangout }) {
   return (
     <Segment.Group>
       <Segment>
@@ -37,6 +37,7 @@ export default function HangoutListItem({ hangout, selectHangout }) {
       <Segment clearing>
         <div>Description of Hangout</div>
         <p>{hangout.description}</p>
+        <Button onClick={() => deleteHangout(hangout.id)} color="red" floated="right" content="Delete" />
         <Button onClick={() => selectHangout(hangout)} color="teal" floated="right" content="View" />
       </Segment>
     </Segment.Group>
