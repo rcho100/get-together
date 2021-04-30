@@ -5,12 +5,29 @@ body {
 .ui.menu.fixed {
   background-image: linear-gradient(
     135deg,
-    rgb(24, 42, 115) 0%,
-    rgb(33, 138, 174) 69%,
-    rgb(32, 167, 172) 89%
+    rgb(29, 47, 120) 0%,
+    rgb(38, 143, 179) 69%,
+    rgb(37, 172, 177) 89%
   );
 }
 
 .ui.container.main {
   margin-top: 7em;
+}
+
+.homepage {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+    135deg,
+    rgb(29, 47, 120) 0%,
+    rgb(38, 143, 179) 69%,
+    rgb(37, 172, 177) 89%
+  ) !important;
+  height: 100vh;
+
+}
+
+.homepage h1.ui.header {
+  font-size: 4em;
 }
