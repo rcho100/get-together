@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button, Icon, Item, List, Segment,
 } from 'semantic-ui-react';
 import HangoutListAttendee from './HangoutListAttendee';
 
-export default function HangoutListItem({ hangout, selectHangout, deleteHangout }) {
+export default function HangoutListItem({ hangout, deleteHangout }) {
   return (
     <Segment.Group>
       <Segment>
@@ -38,7 +39,7 @@ export default function HangoutListItem({ hangout, selectHangout, deleteHangout 
         <div>Description of Hangout</div>
         <p>{hangout.description}</p>
         <Button onClick={() => deleteHangout(hangout.id)} color="red" floated="right" content="Delete" />
-        <Button onClick={() => selectHangout(hangout)} color="teal" floated="right" content="View" />
+        <Button as={Link} to={`/hangouts/${hangout.id}`} color="teal" floated="right" content="View" />
       </Segment>
     </Segment.Group>
   );

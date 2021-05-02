@@ -6,7 +6,7 @@ import HangoutList from './HangoutList';
 import { sampleData } from '../../../app/api/sampleData';
 
 export default function HangoutDashboard({
-  formDisplayed, setFormDisplayed, selectHangout, selectedHangout,
+  formDisplayed, setFormDisplayed, selectedHangout,
 }) {
   const [hangouts, setHangouts] = useState(sampleData);
 
@@ -18,7 +18,6 @@ export default function HangoutDashboard({
     setHangouts(hangouts.map((hangout) => (
       hangout.id === updatedHangout.id ? updatedHangout : hangout
     )));
-    selectHangout(null);
   };
 
   const handleDeleteHangout = (hangoutID) => {
@@ -30,7 +29,6 @@ export default function HangoutDashboard({
       <Grid.Column width={10}>
         <HangoutList
           hangouts={hangouts}
-          selectHangout={selectHangout}
           deleteHangout={handleDeleteHangout}
         />
       </Grid.Column>
