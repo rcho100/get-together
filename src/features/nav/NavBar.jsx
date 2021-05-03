@@ -2,6 +2,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Container, Menu } from 'semantic-ui-react';
+import SignedInMenu from './SignedInMenu';
+import SignedOutMenu from './SignedOutMenu';
 
 export default function Navbar({ handleCreateFormDisplayed }) {
   return (
@@ -17,10 +19,8 @@ export default function Navbar({ handleCreateFormDisplayed }) {
           <Menu.Item as={NavLink} to="/createHangout">
             <Button onClick={handleCreateFormDisplayed} positive inverted content="Create a Hangout" />
           </Menu.Item>
-          <Menu.Item position="right">
-            <Button basic inverted content="Login" />
-            <Button basic inverted content="Sign Up" style={{ marginLeft: '0.5em' }} />
-          </Menu.Item>
+          <SignedOutMenu />
+          <SignedInMenu />
         </Container>
       </Menu>
     </>
