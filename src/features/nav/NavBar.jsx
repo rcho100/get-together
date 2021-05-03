@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Container, Menu } from 'semantic-ui-react';
 import SignedInMenu from './SignedInMenu';
 import SignedOutMenu from './SignedOutMenu';
 
 export default function Navbar({ handleCreateFormDisplayed }) {
+  const [authenticated, setAuthenticated] = useState(false);
+
   return (
     <>
       <Menu inverted fixed="top">
@@ -16,11 +18,14 @@ export default function Navbar({ handleCreateFormDisplayed }) {
           <Menu.Item as={NavLink} to="/hangouts">
             Hangouts
           </Menu.Item>
-          <Menu.Item as={NavLink} to="/createHangout">
-            <Button onClick={handleCreateFormDisplayed} positive inverted content="Create a Hangout" />
-          </Menu.Item>
-          <SignedOutMenu />
-          <SignedInMenu />
+          {authenticated && (
+            <Menu.Item as={NavLink} to="/createHangout">
+              <Button onClick={handleCreateFormDisplayed} positive inverted content="Create a Hangout" />
+            </Menu.Item>
+          )}
+          {authenticated
+            ? (<SignedInMenu setAuthenticated={setAuthenticated} />)
+            : (<SignedOutMenu setAuthenticated={setAuthenticated} />)}
         </Container>
       </Menu>
     </>

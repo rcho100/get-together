@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Image, Dropdown } from 'semantic-ui-react';
 
-export default function SignedInMenu() {
+export default function SignedInMenu({ setAuthenticated }) {
   return (
     <Menu.Item position="right">
       <Image avatar spaced="right" src="/assets/defaultUserImage.png" />
@@ -10,7 +11,7 @@ export default function SignedInMenu() {
         <Dropdown.Menu>
           <Dropdown.Item as={Link} to="/createHangout" text="Create Hangout" icon="plus" />
           <Dropdown.Item text="My profile" icon="user" />
-          <Dropdown.Item text="Sign out" icon="power" />
+          <Dropdown.Item onClick={() => setAuthenticated(false)} text="Sign out" icon="power" />
         </Dropdown.Menu>
       </Dropdown>
     </Menu.Item>
