@@ -1,12 +1,18 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { Button, Container, Menu } from 'semantic-ui-react';
 import SignedInMenu from './SignedInMenu';
 import SignedOutMenu from './SignedOutMenu';
 
 export default function Navbar({ handleCreateFormDisplayed }) {
   const [authenticated, setAuthenticated] = useState(false);
+  const history = useHistory();
+
+  const handleSignOut = () => {
+    setAuthenticated(false);
+    history.push('/');
+  };
 
   return (
     <>
@@ -24,7 +30,7 @@ export default function Navbar({ handleCreateFormDisplayed }) {
             </Menu.Item>
           )}
           {authenticated
-            ? (<SignedInMenu setAuthenticated={setAuthenticated} />)
+            ? (<SignedInMenu signOut={handleSignOut} />)
             : (<SignedOutMenu setAuthenticated={setAuthenticated} />)}
         </Container>
       </Menu>
