@@ -1,7 +1,8 @@
 import React from 'react';
+import HangoutDetailedHeader from './HangoutDetailedHeader';
 
 export default function HangoutDetailedPage() {
   return (
-    <h1>Hangout Detailed Page</h1>
+    <HangoutDetailedHeader />
   );
 }
