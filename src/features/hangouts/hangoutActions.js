@@ -4,18 +4,18 @@ import { CREATE_HANGOUT, UPDATE_HANGOUT, DELETE_HANGOUT } from './hangoutConstan
 export function createHangout(hangout) {
   return {
     type: CREATE_HANGOUT,
-    payload: hangout,
+    hangout,
   };
 }
 export function updateHangout(hangout) {
   return {
     type: UPDATE_HANGOUT,
-    payload: hangout,
+    hangout,
   };
 }
 export function deleteHangout(hangoutID) {
   return {
     type: DELETE_HANGOUT,
-    payload: hangoutID,
+    hangoutID,
   };
 }
