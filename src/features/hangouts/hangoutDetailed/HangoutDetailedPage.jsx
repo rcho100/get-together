@@ -17,7 +17,7 @@ export default function HangoutDetailedPage({ match }) {
         <HangoutDetailedInfo selectedHangout={selectedHangout} />
       </Grid.Column>
       <Grid.Column width={6}>
-        <HangoutDetailedSideBar />
+        <HangoutDetailedSideBar attendees={selectedHangout.attendees} />
       </Grid.Column>
     </Grid>
   );

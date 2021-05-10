@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   Segment, Item,
 } from 'semantic-ui-react';
 
-export default function HangoutDetailedSideBar() {
+export default function HangoutDetailedSideBar({ attendees }) {
+  const numOfAttendees = attendees.length;
+
   return (
     <>
       <Segment
@@ -13,26 +16,20 @@ export default function HangoutDetailedSideBar() {
         inverted
         color="teal"
       >
-        No. of People Going
+        {numOfAttendees === 1 ? `${numOfAttendees} Person Going` : `${numOfAttendees} People Going`}
       </Segment>
       <Segment attached>
         <Item.Group relaxed divided>
-          <Item>
-            <Item.Image size="tiny" circular src="/assets/defaultUserImage.png" />
-            <Item.Content verticalAlign="middle">
-              <Item.Header>
-                <span>Attendee Name</span>
-              </Item.Header>
-            </Item.Content>
-          </Item>
-          <Item>
-            <Item.Image size="tiny" circular src="/assets/defaultUserImage.png" />
-            <Item.Content verticalAlign="middle">
-              <Item.Header>
-                Attendee Name
-              </Item.Header>
-            </Item.Content>
-          </Item>
+          {attendees.map((attendee) => (
+            <Item key={attendee.id}>
+              <Item.Image size="tiny" circular src={attendee.photoURL || '/assets/defaultUserImage.png'} />
+              <Item.Content verticalAlign="middle">
+                <Item.Header>
+                  <span>{attendee.name}</span>
+                </Item.Header>
+              </Item.Content>
+            </Item>
+          ))}
         </Item.Group>
       </Segment>
     </>
