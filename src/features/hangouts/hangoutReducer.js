@@ -1,7 +1,8 @@
+import { sampleData } from '../../app/api/sampleData';
 import { CREATE_HANGOUT, UPDATE_HANGOUT, DELETE_HANGOUT } from './hangoutConstants';
 
 const initialState = {
-  hangouts: [],
+  hangouts: sampleData,
 };
 
 export default function hangoutReducer(state = initialState, action) {

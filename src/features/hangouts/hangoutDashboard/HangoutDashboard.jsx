@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
+import { useSelector } from 'react-redux';
 import HangoutList from './HangoutList';
-import { sampleData } from '../../../app/api/sampleData';
 
 export default function HangoutDashboard() {
-  const [hangouts, setHangouts] = useState(sampleData);
+  const hangouts = useSelector(((state) => state.hangouts));
 
   // coming back to these:
   // const handleCreateHangout = (hangout) => {
@@ -18,16 +18,16 @@ export default function HangoutDashboard() {
   //   )));
   // };
 
-  const handleDeleteHangout = (hangoutID) => {
-    setHangouts(hangouts.filter((hangout) => hangout.id !== hangoutID));
-  };
+  // const handleDeleteHangout = (hangoutID) => {
+  //   setHangouts(hangouts.filter((hangout) => hangout.id !== hangoutID));
+  // };
 
   return (
     <Grid>
       <Grid.Column width={10}>
         <HangoutList
           hangouts={hangouts}
-          deleteHangout={handleDeleteHangout}
+          // deleteHangout={handleDeleteHangout}
         />
       </Grid.Column>
       <Grid.Column width={6}>
