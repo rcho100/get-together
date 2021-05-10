@@ -1,20 +1,20 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   Segment, Item, Header, Button,
 } from 'semantic-ui-react';
 
-export default function HangoutDetailedHeader() {
+export default function HangoutDetailedHeader({ selectedHangout }) {
   return (
     <Segment.Group>
       <Segment>
         <Item>
           <Item.Content>
-            <Header size="huge" content="Hangout Title" />
-            <p>Hangout Date</p>
+            <Header size="huge" content={selectedHangout.title} />
+            <p>{`Date: ${selectedHangout.date}`}</p>
             <p>
               Hosted by
-              {' '}
-              <strong>Host Name</strong>
+              <strong>{` ${selectedHangout.hostedBy}`}</strong>
             </p>
           </Item.Content>
         </Item>
