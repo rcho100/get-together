@@ -18,16 +18,11 @@ export default function HangoutDashboard() {
   //   )));
   // };
 
-  // const handleDeleteHangout = (hangoutID) => {
-  //   setHangouts(hangouts.filter((hangout) => hangout.id !== hangoutID));
-  // };
-
   return (
     <Grid>
       <Grid.Column width={10}>
         <HangoutList
           hangouts={hangouts}
-          // deleteHangout={handleDeleteHangout}
         />
       </Grid.Column>
       <Grid.Column width={6}>
