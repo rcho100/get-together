@@ -7,7 +7,7 @@ import cuid from 'cuid';
 import { useSelector, useDispatch } from 'react-redux';
 import { createHangout, updateHangout } from '../hangoutActions';
 
-export default function HangoutForm({ match }) {
+export default function HangoutForm({ match, history }) {
   const dispatch = useDispatch();
   const selectedHangout = useSelector((state) => (
     state.hangouts.find((hangout) => hangout.id === match.params.id)
@@ -37,6 +37,7 @@ export default function HangoutForm({ match }) {
         ...values, id: cuid(), hostedBy: 'Rich', attendees: [], hostPhotoURL: '/assets/defaultUserImage.png',
       }));
     }
+    history.push('/hangouts');
   };
 
   return (
@@ -97,8 +98,17 @@ export default function HangoutForm({ match }) {
             onChange={(event) => handleInputChange(event)}
           />
         </Form.Field>
-        <Button type="submit" floated="right" positive content={selectedHangout ? 'Edit' : 'Create'} />
-        <Button floated="right" content="Cancel" />
+        <Button
+          type="submit"
+          floated="right"
+          positive
+          content={selectedHangout ? 'Edit' : 'Create'}
+        />
+        <Button
+          onClick={() => history.push('/hangouts')}
+          floated="right"
+          content="Cancel"
+        />
       </Form>
     </Segment>
   );
