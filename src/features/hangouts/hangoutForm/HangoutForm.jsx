@@ -4,11 +4,11 @@ import {
   Button, Form, Header, Segment,
 } from 'semantic-ui-react';
 import cuid from 'cuid';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { createHangout, updateHangout } from '../hangoutActions';
 
-export default function HangoutForm({
-  setFormDisplayed, createHangout, updateHangout, match,
-}) {
+export default function HangoutForm({ match }) {
+  const dispatch = useDispatch();
   const selectedHangout = useSelector((state) => (
     state.hangouts.find((hangout) => hangout.id === match.params.id)
   ));
@@ -31,13 +31,12 @@ export default function HangoutForm({
 
   const handleFormSubmit = () => {
     if (selectedHangout) {
-      updateHangout({ ...selectedHangout, ...values });
+      dispatch(updateHangout({ ...selectedHangout, ...values }));
     } else {
-      createHangout({
+      dispatch(createHangout({
         ...values, id: cuid(), hostedBy: 'Rich', attendees: [], hostPhotoURL: '/assets/defaultUserImage.png',
-      });
+      }));
     }
-    setFormDisplayed(false);
   };
 
   return (
@@ -99,7 +98,7 @@ export default function HangoutForm({
           />
         </Form.Field>
         <Button type="submit" floated="right" positive content={selectedHangout ? 'Edit' : 'Create'} />
-        <Button onClick={() => setFormDisplayed(false)} type="submit" floated="right" content="Cancel" />
+        <Button floated="right" content="Cancel" />
       </Form>
     </Segment>
   );
