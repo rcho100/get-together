@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Segment, Item, Header, Button,
 } from 'semantic-ui-react';
@@ -23,8 +24,8 @@ export default function HangoutDetailedHeader({ selectedHangout }) {
       <Segment>
         <Button>Cancel</Button>
         <Button color="teal">JOIN THIS HANGOUT</Button>
-        <Button color="orange" floated="right">
-          Manage Hangout
+        <Button as={Link} to={`/edit/${selectedHangout.id}`} color="orange" floated="right">
+          Edit Hangout
         </Button>
       </Segment>
     </Segment.Group>

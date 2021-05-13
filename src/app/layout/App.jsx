@@ -22,7 +22,7 @@ export default function App() {
             <Container className="main">
               <Route exact path="/hangouts" component={HangoutDashboard} />
               <Route path="/hangouts/:id" component={HangoutDetailedPage} />
-              <Route path="/createHangout" component={HangoutForm} />
+              <Route path={['/createHangout', '/edit/:id']} component={HangoutForm} />
             </Container>
           </>
         )}

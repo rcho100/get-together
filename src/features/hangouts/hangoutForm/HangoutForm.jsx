@@ -4,10 +4,15 @@ import {
   Button, Form, Header, Segment,
 } from 'semantic-ui-react';
 import cuid from 'cuid';
+import { useSelector } from 'react-redux';
 
 export default function HangoutForm({
-  setFormDisplayed, createHangout, selectedHangout, updateHangout,
+  setFormDisplayed, createHangout, updateHangout, match,
 }) {
+  const selectedHangout = useSelector((state) => (
+    state.hangouts.find((hangout) => hangout.id === match.params.id)
+  ));
+
   const initialValues = selectedHangout ?? {
     title: '',
     category: '',
@@ -37,7 +42,7 @@ export default function HangoutForm({
 
   return (
     <Segment clearing>
-      <Header content={selectedHangout ? 'Hangout Details' : 'Create New Hangout'} />
+      <Header content={selectedHangout ? 'Edit Hangout' : 'Create New Hangout'} />
       <Form onSubmit={handleFormSubmit}>
         <Form.Field>
           <input
