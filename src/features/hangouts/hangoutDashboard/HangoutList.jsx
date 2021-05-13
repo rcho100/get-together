@@ -9,7 +9,6 @@ export default function HangoutList({ hangouts }) {
         <HangoutListItem
           key={hangout.id}
           hangout={hangout}
-          // deleteHangout={deleteHangout}
         />
       ))}
     </>

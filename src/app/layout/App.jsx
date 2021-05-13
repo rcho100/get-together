@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, useLocation } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import HangoutDashboard from '../../features/hangouts/hangoutDashboard/HangoutDashboard';
 import HangoutDetailedPage from '../../features/hangouts/hangoutDetailed/HangoutDetailedPage';
@@ -9,6 +9,8 @@ import Homepage from '../../features/home/Homepage';
 import Navbar from '../../features/nav/NavBar';
 
 export default function App() {
+  const { key } = useLocation();
+
   return (
     <>
       <Route exact path="/" component={Homepage} />
@@ -22,7 +24,7 @@ export default function App() {
             <Container className="main">
               <Route exact path="/hangouts" component={HangoutDashboard} />
               <Route path="/hangouts/:id" component={HangoutDetailedPage} />
-              <Route path={['/createHangout', '/edit/:id']} component={HangoutForm} />
+              <Route path={['/createHangout', '/edit/:id']} component={HangoutForm} key={key} />
             </Container>
           </>
         )}
