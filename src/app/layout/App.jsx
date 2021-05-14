@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react';
+import { Route, useLocation } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import HangoutDashboard from '../../features/hangouts/hangoutDashboard/HangoutDashboard';
 import HangoutDetailedPage from '../../features/hangouts/hangoutDetailed/HangoutDetailedPage';
@@ -9,13 +9,7 @@ import Homepage from '../../features/home/Homepage';
 import Navbar from '../../features/nav/NavBar';
 
 export default function App() {
-  const [formDisplayed, setFormDisplayed] = useState(false);
-  const [selectedHangout, setSelectedHangout] = useState(null);
-
-  const handleCreateFormDisplayed = () => {
-    setSelectedHangout(null);
-    setFormDisplayed(true);
-  };
+  const { key } = useLocation();
 
   return (
     <>
@@ -26,11 +20,11 @@ export default function App() {
         path="/(.+)"
         render={() => (
           <>
-            <Navbar handleCreateFormDisplayed={handleCreateFormDisplayed} />
+            <Navbar />
             <Container className="main">
               <Route exact path="/hangouts" component={HangoutDashboard} />
               <Route path="/hangouts/:id" component={HangoutDetailedPage} />
-              <Route path="/createHangout" component={HangoutForm} />
+              <Route path={['/createHangout', '/edit/:id']} component={HangoutForm} key={key} />
             </Container>
           </>
         )}

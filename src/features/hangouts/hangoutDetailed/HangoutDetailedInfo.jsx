@@ -1,38 +1,39 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   Segment, Grid, Icon,
 } from 'semantic-ui-react';
 
-export default function HangoutDetailedInfo() {
+export default function HangoutDetailedInfo({ selectedHangout }) {
   return (
     <Segment.Group>
       <Segment>
         <Grid verticalAlign="middle">
-          <Grid.Column>
+          <Grid.Column width={1}>
             <Icon size="large" color="teal" name="info" />
           </Grid.Column>
-          <Grid.Column>
-            <p>Hangout Description</p>
+          <Grid.Column width={15}>
+            <p>{`${selectedHangout.description}`}</p>
           </Grid.Column>
         </Grid>
       </Segment>
       <Segment>
         <Grid verticalAlign="middle">
-          <Grid.Column>
+          <Grid.Column width={1}>
             <Icon name="calendar" size="large" color="teal" />
           </Grid.Column>
-          <Grid.Column>
-            <span>Hangout Date</span>
+          <Grid.Column width={15}>
+            <span>{`Date: ${selectedHangout.date}`}</span>
           </Grid.Column>
         </Grid>
       </Segment>
       <Segment>
         <Grid verticalAlign="middle">
-          <Grid.Column>
+          <Grid.Column width={1}>
             <Icon name="marker" size="large" color="teal" />
           </Grid.Column>
-          <Grid.Column>
-            <span>Hangout Venue</span>
+          <Grid.Column width={15}>
+            <span>{`Venue: ${selectedHangout.venue}`}</span>
           </Grid.Column>
         </Grid>
       </Segment>

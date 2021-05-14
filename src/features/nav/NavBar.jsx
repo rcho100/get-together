@@ -5,7 +5,7 @@ import { Button, Container, Menu } from 'semantic-ui-react';
 import SignedInMenu from './SignedInMenu';
 import SignedOutMenu from './SignedOutMenu';
 
-export default function Navbar({ handleCreateFormDisplayed }) {
+export default function Navbar() {
   const [authenticated, setAuthenticated] = useState(false);
   const history = useHistory();
 
@@ -26,7 +26,7 @@ export default function Navbar({ handleCreateFormDisplayed }) {
           </Menu.Item>
           {authenticated && (
             <Menu.Item as={NavLink} to="/createHangout">
-              <Button onClick={handleCreateFormDisplayed} positive inverted content="Create a Hangout" />
+              <Button positive inverted content="Create a Hangout" />
             </Menu.Item>
           )}
           {authenticated

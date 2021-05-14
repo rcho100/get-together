@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 import {
   Button, Icon, Item, List, Segment,
 } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
 import HangoutListAttendee from './HangoutListAttendee';
+import { deleteHangout } from '../hangoutActions';
 
-export default function HangoutListItem({ hangout, deleteHangout }) {
+export default function HangoutListItem({ hangout }) {
+  const dispatch = useDispatch();
+
   return (
     <Segment.Group>
       <Segment>
@@ -38,7 +42,12 @@ export default function HangoutListItem({ hangout, deleteHangout }) {
       <Segment clearing>
         <div>Description of Hangout</div>
         <p>{hangout.description}</p>
-        <Button onClick={() => deleteHangout(hangout.id)} color="red" floated="right" content="Delete" />
+        <Button
+          onClick={() => dispatch(deleteHangout(hangout.id))}
+          color="red"
+          floated="right"
+          content="Delete"
+        />
         <Button as={Link} to={`/hangouts/${hangout.id}`} color="teal" floated="right" content="View" />
       </Segment>
     </Segment.Group>

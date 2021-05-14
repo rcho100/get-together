@@ -1,48 +1,19 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import HangoutForm from '../hangoutForm/HangoutForm';
+import { useSelector } from 'react-redux';
 import HangoutList from './HangoutList';
-import { sampleData } from '../../../app/api/sampleData';
 
-export default function HangoutDashboard({
-  formDisplayed, setFormDisplayed, selectedHangout,
-}) {
-  const [hangouts, setHangouts] = useState(sampleData);
-
-  const handleCreateHangout = (hangout) => {
-    setHangouts([...hangouts, hangout]);
-  };
-
-  const handleUpdateHangout = (updatedHangout) => {
-    setHangouts(hangouts.map((hangout) => (
-      hangout.id === updatedHangout.id ? updatedHangout : hangout
-    )));
-  };
-
-  const handleDeleteHangout = (hangoutID) => {
-    setHangouts(hangouts.filter((hangout) => hangout.id !== hangoutID));
-  };
+export default function HangoutDashboard() {
+  const hangouts = useSelector(((state) => state.hangouts));
 
   return (
     <Grid>
       <Grid.Column width={10}>
-        <HangoutList
-          hangouts={hangouts}
-          deleteHangout={handleDeleteHangout}
-        />
+        <HangoutList hangouts={hangouts} />
       </Grid.Column>
       <Grid.Column width={6}>
-        {formDisplayed
-        && (
-        <HangoutForm
-          key={selectedHangout ? selectedHangout.id : null}
-          setFormDisplayed={setFormDisplayed}
-          createHangout={handleCreateHangout}
-          selectedHangout={selectedHangout}
-          updateHangout={handleUpdateHangout}
-        />
-        )}
+        <p>Temp Space</p>
       </Grid.Column>
     </Grid>
   );
