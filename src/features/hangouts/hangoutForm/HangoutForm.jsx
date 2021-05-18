@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  Button, Form, Header, Segment,
+  Button, Header, Segment, FormField,
 } from 'semantic-ui-react';
 import cuid from 'cuid';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Formik, Form, Field,
+} from 'formik';
 import { createHangout, updateHangout } from '../hangoutActions';
 
 export default function HangoutForm({ match, history }) {
@@ -22,94 +25,58 @@ export default function HangoutForm({ match, history }) {
     date: '',
   };
 
-  const [values, setValues] = useState(initialValues);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value });
-  };
-
-  const handleFormSubmit = () => {
-    if (selectedHangout) {
-      dispatch(updateHangout({ ...selectedHangout, ...values }));
-    } else {
-      dispatch(createHangout({
-        ...values, id: cuid(), hostedBy: 'Rich', attendees: [], hostPhotoURL: '/assets/defaultUserImage.png',
-      }));
-    }
-    history.push('/hangouts');
-  };
-
   return (
     <Segment clearing>
       <Header content={selectedHangout ? 'Edit Hangout' : 'Create New Hangout'} />
-      <Form onSubmit={handleFormSubmit}>
-        <Form.Field>
-          <input
-            name="title"
-            type="text"
-            placeholder="Hangout Title"
-            value={values.title}
-            onChange={(event) => handleInputChange(event)}
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values) => {
+          if (selectedHangout) {
+            dispatch(updateHangout({ ...selectedHangout, ...values }));
+          } else {
+            dispatch(createHangout({
+              ...values,
+              id: cuid(),
+              hostedBy: 'Rich',
+              attendees: [],
+              hostPhotoURL: '/assets/defaultUserImage.png',
+            }));
+          }
+          return history.push('/hangouts');
+        }}
+      >
+        <Form className="ui form">
+          <FormField>
+            <Field name="title" placeholder="Hangout Title" />
+          </FormField>
+          <FormField>
+            <Field name="category" placeholder="Category" />
+          </FormField>
+          <FormField>
+            <Field name="description" placeholder="Description" />
+          </FormField>
+          <FormField>
+            <Field name="city" placeholder="City" />
+          </FormField>
+          <FormField>
+            <Field name="venue" placeholder="Venue" />
+          </FormField>
+          <FormField>
+            <Field name="date" placeholder="Date" type="date" />
+          </FormField>
+          <Button
+            type="submit"
+            floated="right"
+            positive
+            content={selectedHangout ? 'Edit' : 'Create'}
           />
-        </Form.Field>
-        <Form.Field>
-          <input
-            name="category"
-            type="text"
-            placeholder="Category"
-            value={values.category}
-            onChange={(event) => handleInputChange(event)}
+          <Button
+            onClick={() => history.push('/hangouts')}
+            floated="right"
+            content="Cancel"
           />
-        </Form.Field>
-        <Form.Field>
-          <input
-            name="description"
-            type="text"
-            placeholder="Description"
-            value={values.description}
-            onChange={(event) => handleInputChange(event)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <input
-            name="city"
-            type="text"
-            placeholder="City"
-            value={values.city}
-            onChange={(event) => handleInputChange(event)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <input
-            name="venue"
-            type="text"
-            placeholder="Venue"
-            value={values.venue}
-            onChange={(event) => handleInputChange(event)}
-          />
-        </Form.Field>
-        <Form.Field>
-          <input
-            name="date"
-            type="text"
-            placeholder="Date"
-            value={values.date}
-            onChange={(event) => handleInputChange(event)}
-          />
-        </Form.Field>
-        <Button
-          type="submit"
-          floated="right"
-          positive
-          content={selectedHangout ? 'Edit' : 'Create'}
-        />
-        <Button
-          onClick={() => history.push('/hangouts')}
-          floated="right"
-          content="Cancel"
-        />
-      </Form>
+        </Form>
+      </Formik>
     </Segment>
   );
 }
