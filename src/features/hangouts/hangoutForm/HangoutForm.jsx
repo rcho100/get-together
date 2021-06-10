@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  Button, Header, Segment, FormField,
+  Button, Header, Segment, FormField, Label,
 } from 'semantic-ui-react';
 import cuid from 'cuid';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Formik, Form, Field, ErrorMessage, Label,
+  Formik, Form, Field, ErrorMessage,
 } from 'formik';
 import * as Yup from 'yup';
 import { createHangout, updateHangout } from '../hangoutActions';
@@ -63,23 +63,23 @@ export default function HangoutForm({ match, history }) {
           </FormField>
           <FormField>
             <Field name="category" placeholder="Category" />
-            <ErrorMessage name="title" render={(error) => <Label basic color="red" content={error} />} />
+            <ErrorMessage name="category" render={(error) => <Label basic color="red" content={error} />} />
           </FormField>
           <FormField>
             <Field name="description" placeholder="Description" />
-            <ErrorMessage name="title" render={(error) => <Label basic color="red" content={error} />} />
+            <ErrorMessage name="description" render={(error) => <Label basic color="red" content={error} />} />
           </FormField>
           <FormField>
             <Field name="city" placeholder="City" />
-            <ErrorMessage name="title" render={(error) => <Label basic color="red" content={error} />} />
+            <ErrorMessage name="city" render={(error) => <Label basic color="red" content={error} />} />
           </FormField>
           <FormField>
             <Field name="venue" placeholder="Venue" />
-            <ErrorMessage name="title" render={(error) => <Label basic color="red" content={error} />} />
+            <ErrorMessage name="venue" render={(error) => <Label basic color="red" content={error} />} />
           </FormField>
           <FormField>
             <Field name="date" placeholder="Date" type="date" />
-            <ErrorMessage name="title" render={(error) => <Label basic color="red" content={error} />} />
+            <ErrorMessage name="date" render={(error) => <Label basic color="red" content={error} />} />
           </FormField>
           <Button
             type="submit"
