@@ -12,6 +12,7 @@ import * as Yup from 'yup';
 import { createHangout, updateHangout } from '../hangoutActions';
 import FormTextInput from '../../../app/common/form/FormTextInput';
 import FormTextArea from '../../../app/common/form/FormTextArea';
+import FormSelectInput from '../../../app/common/form/FormSelectInput';
 
 export default function HangoutForm({ match, history }) {
   const dispatch = useDispatch();
@@ -61,7 +62,18 @@ export default function HangoutForm({ match, history }) {
         <Form className="ui form">
           <Header sub color="teal" content="Hangout Details" />
           <FormTextInput name="title" placeholder="Hangout Title" />
-          <FormTextInput name="category" placeholder="Category" />
+          <FormSelectInput
+            name="category"
+            placeholder="Category"
+            options={[
+              { key: 'drinks', text: 'Drinks', value: 'drinks' },
+              { key: 'culture', text: 'Culture', value: 'culture' },
+              { key: 'film', text: 'Film', value: 'film' },
+              { key: 'food', text: 'Food', value: 'food' },
+              { key: 'music', text: 'Music', value: 'music' },
+              { key: 'travel', text: 'Travel', value: 'travel' },
+            ]}
+          />
           <FormTextArea name="description" placeholder="Description" rows={3} />
           <FormTextInput name="city" placeholder="City" />
           <FormTextInput name="venue" placeholder="Venue" />
