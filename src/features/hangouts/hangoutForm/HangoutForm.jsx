@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
-  Button, Header, Segment, FormField, Label,
+  Button, Header, Segment,
 } from 'semantic-ui-react';
 import cuid from 'cuid';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Formik, Form, Field, ErrorMessage,
+  Formik, Form,
 } from 'formik';
 import * as Yup from 'yup';
 import { createHangout, updateHangout } from '../hangoutActions';
+import FormTextInput from '../../../app/common/form/FormTextInput';
+import FormTextArea from '../../../app/common/form/FormTextArea';
 
 export default function HangoutForm({ match, history }) {
   const dispatch = useDispatch();
@@ -57,30 +59,13 @@ export default function HangoutForm({ match, history }) {
         }}
       >
         <Form className="ui form">
-          <FormField>
-            <Field name="title" placeholder="Hangout Title" />
-            <ErrorMessage name="title" render={(error) => <Label basic color="red" content={error} />} />
-          </FormField>
-          <FormField>
-            <Field name="category" placeholder="Category" />
-            <ErrorMessage name="category" render={(error) => <Label basic color="red" content={error} />} />
-          </FormField>
-          <FormField>
-            <Field name="description" placeholder="Description" />
-            <ErrorMessage name="description" render={(error) => <Label basic color="red" content={error} />} />
-          </FormField>
-          <FormField>
-            <Field name="city" placeholder="City" />
-            <ErrorMessage name="city" render={(error) => <Label basic color="red" content={error} />} />
-          </FormField>
-          <FormField>
-            <Field name="venue" placeholder="Venue" />
-            <ErrorMessage name="venue" render={(error) => <Label basic color="red" content={error} />} />
-          </FormField>
-          <FormField>
-            <Field name="date" placeholder="Date" type="date" />
-            <ErrorMessage name="date" render={(error) => <Label basic color="red" content={error} />} />
-          </FormField>
+          <Header sub color="teal" content="Hangout Details" />
+          <FormTextInput name="title" placeholder="Hangout Title" />
+          <FormTextInput name="category" placeholder="Category" />
+          <FormTextArea name="description" placeholder="Description" rows={3} />
+          <FormTextInput name="city" placeholder="City" />
+          <FormTextInput name="venue" placeholder="Venue" />
+          <FormTextInput name="date" placeholder="Date" type="date" />
           <Button
             type="submit"
             floated="right"
