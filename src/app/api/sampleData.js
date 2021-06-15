@@ -3,7 +3,7 @@ export const sampleData = [
   {
     id: '1',
     title: 'TGIF Pizza Night',
-    date: '2021-04-23',
+    date: new Date('2021-04-23'),
     category: 'food',
     description: 'Pizza lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis libero dolore velit maiores inventore quo dolorem recusandae consequatur ipsum unde, vitae non consequuntur quae rem fuga ratione. Facilis, nulla esse!',
     city: 'New York, NY',
@@ -26,7 +26,7 @@ export const sampleData = [
   {
     id: '2',
     title: 'Taco Tuesday',
-    date: '2021-04-27',
+    date: new Date('2021-04-27'),
     category: 'food',
     description: 'Taco lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis libero dolore velit maiores inventore quo dolorem recusandae consequatur ipsum unde, vitae non consequuntur quae rem fuga ratione. Facilis, nulla esse!',
     city: 'New York, NY',

@@ -5,6 +5,7 @@ import {
   Button, Icon, Item, List, Segment,
 } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
+import { format } from 'date-fns';
 import HangoutListAttendee from './HangoutListAttendee';
 import { deleteHangout } from '../hangoutActions';
 
@@ -34,7 +35,7 @@ export default function HangoutListItem({ hangout }) {
       <Segment>
         <span>
           <Icon name="clock" />
-          {hangout.date}
+          {format(hangout.date, 'MMMM d, yyyy h:mm a')}
           <Icon name="marker" />
           {hangout.venue}
         </span>
