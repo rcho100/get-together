@@ -13,6 +13,7 @@ import { createHangout, updateHangout } from '../hangoutActions';
 import FormTextInput from '../../../app/common/form/FormTextInput';
 import FormTextArea from '../../../app/common/form/FormTextArea';
 import FormSelectInput from '../../../app/common/form/FormSelectInput';
+import FormDateInput from '../../../app/common/form/FormDateInput';
 
 export default function HangoutForm({ match, history }) {
   const dispatch = useDispatch();
@@ -77,7 +78,15 @@ export default function HangoutForm({ match, history }) {
           <FormTextArea name="description" placeholder="Description" rows={3} />
           <FormTextInput name="city" placeholder="City" />
           <FormTextInput name="venue" placeholder="Venue" />
-          <FormTextInput name="date" placeholder="Date" type="date" />
+          <FormDateInput
+            name="date"
+            placeholderText="Date"
+            timeFormat="HH:mm"
+            showTimeSelect
+            timeCaption="time"
+            dateFormat="MMMM d, yyyy h:mm a"
+          />
+          {/* showTimeSelect allows user to select time */}
           <Button
             type="submit"
             floated="right"
