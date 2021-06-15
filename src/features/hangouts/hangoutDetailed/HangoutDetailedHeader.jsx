@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   Segment, Item, Header, Button,
 } from 'semantic-ui-react';
+import { format } from 'date-fns';
 
 export default function HangoutDetailedHeader({ selectedHangout }) {
   return (
@@ -12,7 +13,7 @@ export default function HangoutDetailedHeader({ selectedHangout }) {
         <Item>
           <Item.Content>
             <Header size="huge" content={selectedHangout.title} />
-            <p>{`Date: ${selectedHangout.date}`}</p>
+            <p>{`Date: ${format(selectedHangout.date, 'MMMM d, yyyy h:mm a')}`}</p>
             <p>
               Hosted by
               <strong>{` ${selectedHangout.hostedBy}`}</strong>

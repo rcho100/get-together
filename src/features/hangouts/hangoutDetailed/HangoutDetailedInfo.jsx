@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Segment, Grid, Icon,
 } from 'semantic-ui-react';
+import { format } from 'date-fns';
 
 export default function HangoutDetailedInfo({ selectedHangout }) {
   return (
@@ -23,7 +24,7 @@ export default function HangoutDetailedInfo({ selectedHangout }) {
             <Icon name="calendar" size="large" color="teal" />
           </Grid.Column>
           <Grid.Column width={15}>
-            <span>{`Date: ${selectedHangout.date}`}</span>
+            <span>{`Date: ${format(selectedHangout.date, 'MMMM d, yyyy h:mm a')}`}</span>
           </Grid.Column>
         </Grid>
       </Segment>
