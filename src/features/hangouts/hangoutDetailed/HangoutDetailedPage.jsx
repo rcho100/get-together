@@ -8,7 +8,7 @@ import HangoutDetailedSideBar from './HangoutDetailedSideBar';
 
 export default function HangoutDetailedPage({ match }) {
   const selectedHangout = useSelector((state) => (
-    state.hangouts.find((hangout) => hangout.id === match.params.id)
+    state.hangoutReducer.hangouts.find((hangout) => hangout.id === match.params.id)
   ));
   return (
     <Grid>

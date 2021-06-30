@@ -18,7 +18,7 @@ import FormDateInput from '../../../app/common/form/FormDateInput';
 export default function HangoutForm({ match, history }) {
   const dispatch = useDispatch();
   const selectedHangout = useSelector((state) => (
-    state.hangouts.find((hangout) => hangout.id === match.params.id)
+    state.hangoutReducer.hangouts.find((hangout) => hangout.id === match.params.id)
   ));
 
   const initialValues = selectedHangout ?? {

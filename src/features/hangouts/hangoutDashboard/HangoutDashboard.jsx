@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import HangoutList from './HangoutList';
 
 export default function HangoutDashboard() {
-  const hangouts = useSelector(((state) => state.hangouts));
+  const hangouts = useSelector(((state) => state.hangoutReducer.hangouts));
 
   return (
     <Grid>
