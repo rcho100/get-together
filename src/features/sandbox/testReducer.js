@@ -1,4 +1,4 @@
-const initialState = 'testing';
+const initialState = { data: 'testing' };
 
 export default function testReducer(state = initialState, type) {
   switch (type) {
