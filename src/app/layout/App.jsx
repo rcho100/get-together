@@ -8,12 +8,14 @@ import HangoutForm from '../../features/hangouts/hangoutForm/HangoutForm';
 import Homepage from '../../features/home/Homepage';
 import Navbar from '../../features/nav/NavBar';
 import Sandbox from '../../features/sandbox/Sandbox';
+import ModalManager from '../common/modals/ModalManager';
 
 export default function App() {
   const { key } = useLocation();
 
   return (
     <>
+      <ModalManager />
       <Route exact path="/" component={Homepage} />
       {/* Using regex - any route with / and something else will render the following */}
       {/* Using this to remove navbar from homepage */}
