@@ -7,6 +7,7 @@ import HangoutDetailedPage from '../../features/hangouts/hangoutDetailed/Hangout
 import HangoutForm from '../../features/hangouts/hangoutForm/HangoutForm';
 import Homepage from '../../features/home/Homepage';
 import Navbar from '../../features/nav/NavBar';
+import Sandbox from '../../features/sandbox/Sandbox';
 
 export default function App() {
   const { key } = useLocation();
@@ -23,6 +24,7 @@ export default function App() {
             <Navbar />
             <Container className="main">
               <Route exact path="/hangouts" component={HangoutDashboard} />
+              <Route exact path="/sandbox" component={Sandbox} />
               <Route path="/hangouts/:id" component={HangoutDetailedPage} />
               <Route path={['/createHangout', '/edit/:id']} component={HangoutForm} key={key} />
             </Container>
