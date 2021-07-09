@@ -24,6 +24,9 @@ export default function Navbar() {
           <Menu.Item as={NavLink} to="/hangouts">
             Hangouts
           </Menu.Item>
+          <Menu.Item as={NavLink} to="/sandbox">
+            Sandbox
+          </Menu.Item>
           {authenticated && (
             <Menu.Item as={NavLink} to="/createHangout">
               <Button positive inverted content="Create a Hangout" />
