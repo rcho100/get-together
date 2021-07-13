@@ -13,7 +13,7 @@ export default function authReducer(state = initialState, { type, payload }) {
         authenticated: true,
         currentUser: {
           email: payload.email,
-          photoURL: '../../../../public/assets/defaultUserImage.png',
+          photoURL: '/assets/defaultUserImage.png',
         },
       };
     case SIGN_OUT_USER:
