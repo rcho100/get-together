@@ -1,5 +1,4 @@
-const SIGN_IN_USER = 'SIGN_IN_USER';
-const SIGN_OUT_USER = 'SIGN_OUT_USER';
+import { SIGN_IN_USER, SIGN_OUT_USER } from './authConstants';
 
 export function signInUser(payload) {
   return {
