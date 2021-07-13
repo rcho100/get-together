@@ -4,10 +4,15 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
 import ModalWrapper from '../../app/common/modals/ModalWrapper';
 import FormTextInput from '../../app/common/form/FormTextInput';
+import { signInUser } from './authActions';
+import { closeModal } from '../../app/common/modals/modalReducer';
 
 export default function LoginForm() {
+  const dispatch = useDispatch();
+
   return (
     <ModalWrapper size="mini" header="Login">
       <Formik
@@ -16,7 +21,10 @@ export default function LoginForm() {
           email: Yup.string().required().email(),
           password: Yup.string().required(),
         })}
-        onSubmit={(values) => {
+        onSubmit={(values, { setSubmitting }) => {
+          dispatch(signInUser(values));
+          setSubmitting(false);
+          dispatch(closeModal());
           console.log(values);
         }}
       >
