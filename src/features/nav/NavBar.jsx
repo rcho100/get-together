@@ -1,18 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Button, Container, Menu } from 'semantic-ui-react';
 import SignedInMenu from './SignedInMenu';
 import SignedOutMenu from './SignedOutMenu';
 
 export default function Navbar() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const history = useHistory();
-
-  const handleSignOut = () => {
-    setAuthenticated(false);
-    history.push('/');
-  };
+  const { authenticated } = useSelector((state) => state.authReducer);
 
   return (
     <>
@@ -33,8 +28,8 @@ export default function Navbar() {
             </Menu.Item>
           )}
           {authenticated
-            ? (<SignedInMenu signOut={handleSignOut} />)
-            : (<SignedOutMenu setAuthenticated={setAuthenticated} />)}
+            ? (<SignedInMenu />)
+            : (<SignedOutMenu />)}
         </Container>
       </Menu>
     </>
